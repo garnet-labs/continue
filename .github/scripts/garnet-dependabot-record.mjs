@@ -26,8 +26,8 @@ export const REVIEWED_PYTHON_POLICIES_VERSION = 1;
 export const REVIEWED_STORAGE_POLICIES_VERSION = 1;
 // C1: capture validity is separate from scope-equivalent comparison validity.
 export const RECORDING_RESULT_CONTRACT_VERSION = 1;
-export const ACTION = 'e546567a72e4fede11ec39d6e9f75b539adef22c';
-export const SENSOR = 'v2.16.0';
+export const ACTION = '8cccc85403e4ac4e05fb7822c994d3c199f9aa57';
+export const SENSOR = 'v2.17.0';
 // These bounds are ALREADY deployed in the audited failed sensor runs; they
 // are coordinated limits, not evidence that a heavy flush will finish.
 export const FINALIZATION_LIMITS = Object.freeze({

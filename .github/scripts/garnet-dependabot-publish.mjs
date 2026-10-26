@@ -16,7 +16,7 @@ const POLICY = 'garnet-dependabot-container-v1';
 const POLICY_V2 = 'garnet-dependabot-container-v2';
 const HELPER = '.github/scripts/garnet-additional-lockfiles.mjs';
 const PUBLISH_WORKFLOW = '.github/workflows/garnet-dependabot-publish.yml';
-const ACTION = 'e546567a72e4fede11ec39d6e9f75b539adef22c';
+const ACTION = '8cccc85403e4ac4e05fb7822c994d3c199f9aa57';
 const CONTEXT = 'Garnet Dependabot recording';
 const SHA = /^[a-f0-9]{40}$/;
 const IMAGE = /^[a-z0-9./_-]+@sha256:[a-f0-9]{64}$/;
@@ -932,7 +932,7 @@ export function validateSide(r, artifact, s, side, scriptHash, helperHashes, rev
   'receipt_run_or_recorder_hash_mismatch');
   check(r.artifact_name === artifactName(s.run_id, s.run_attempt, side) &&
     r.profile_job === `dependabot-${side}-attempt-${s.run_attempt}`, 'receipt_artifact_or_job_mismatch');
-  check(r.action_sha === ACTION && r.sensor_version === 'v2.16.0' &&
+  check(r.action_sha === ACTION && r.sensor_version === 'v2.17.0' &&
     r.native_profile_sha_is_execution_proof === false, 'receipt_policy_mismatch');
   check(r.recording_complete === true && r.workload_success === true &&
     r.workload_exit === 0 && r.status === 'recorded', 'incomplete_recording_or_failed_workload');
