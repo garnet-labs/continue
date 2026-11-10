@@ -61,11 +61,16 @@ jobs:
         node-version: [18, 20, 22, 24]
       fail-fast: false
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
 
+      - uses: garnet-org/action@e546567a72e4fede11ec39d6e9f75b539adef22c # main 2026-09-04
+        if: runner.os == 'Linux'
       - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
         with:
