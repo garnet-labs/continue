@@ -1,0 +1,44 @@
+name: Linux validation
+
+on:
+  push:
+    branches: [ci-linux-validation]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  validation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: "actions/checkout@v6"
+        with:
+          persist-credentials: false
+      - uses: "garnet-org/action@v2.6.0"
+      - uses: "actions/setup-node@v7"
+        with:
+          node-version: "20"
+          package-manager-cache: false
+      - uses: "./.github/actions/setup-packages"
+      - uses: "./.github/actions/setup-component"
+        with:
+          component: "core"
+          include-root: true
+      - name: "Build core"
+        run: |
+          npm run build
+        working-directory: "core"
+      - name: "Install dependencies"
+        run: |
+          npm ci --include=optional
+        working-directory: "extensions/cli"
+      - name: "Build prerequisites"
+        run: |
+          npm run build
+        working-directory: "extensions/cli"
+      - name: "Run checks"
+        run: |
+          npm test
+        working-directory: "extensions/cli"
